@@ -10,6 +10,7 @@ body {
 
 #main-container {
     margin-top: 40px;
+    margin-bottom: 40px;
     /* background-color: pink; */
     width: 100%;
     /* min-width: 600px; */
@@ -21,7 +22,7 @@ body {
 #name{
     color: #87C232;
     font-size: 40px;
-    line-height: 30px;
+    line-height: 20px;
 }
 
 #attention {
@@ -29,15 +30,20 @@ body {
     font-size: 80px;
 }
 
+
 #sub-text{
     color: #696E70;
     font-size: 25px;
 }
 
+/* Beta opens January 2021 */
 #small-text {
     font-size: 15px;
     color: white;
     font-style: italic;
+    position: fixed;
+    top: 5px;
+    left: 5px;
     /* line-height: 0px; */
 }
 
@@ -47,7 +53,12 @@ body {
     min-width: 300px;
     border-radius: 10%;
     margin-top: 30px;
+    transition: transform .2s; /* Animation */
     
+}
+
+#qr:hover {
+    transform: scale(1.05);
 }
 
 
@@ -89,10 +100,42 @@ a:active {
     color: white;
 }
 
-button {
-    padding: 20px;
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #f4511e;
     border: none;
-    background-color: red;
-    border-radius: 20px;
-    color: white;
-}
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 28px;
+    padding: 20px;
+    width: 300px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
