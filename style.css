@@ -22,7 +22,7 @@ body {
 #name{
     color: #87C232;
     font-size: 40px;
-    line-height: 20px;
+    line-height: 25px;
 }
 
 #attention {
@@ -139,3 +139,5 @@ a:active {
     opacity: 1;
     right: 0;
   }
+
+
