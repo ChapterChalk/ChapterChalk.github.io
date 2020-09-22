@@ -19,10 +19,13 @@ body {
     text-align: center;
 }
 
-#name{
-    color: #87C232;
-    font-size: 40px;
-    line-height: 25px;
+#logo-wrapper{
+  height: 200px;
+}
+
+#logo{
+  max-height: 200px;
+  max-width: 200px;
 }
 
 #attention {
@@ -67,11 +70,11 @@ body {
     color: #222629;
 }
 .text-dark-green {
-    color: #618930;
+    color: #4f6b63;
 }
 
 .text-light-green {
-    color: #87C232;
+    color: #1ab88c;
 }
 
 .text-light-grey {
@@ -93,7 +96,7 @@ a:visited {
 }
 /* A link that is hovered on */
 a:hover {
-    color: #87C232;
+    color: #1ab88c;
 }
 /* A link that is selected */
 a:active {
@@ -103,7 +106,7 @@ a:active {
 .button {
     display: inline-block;
     border-radius: 4px;
-    background-color: #f4511e;
+    background-color: #1ab88c;
     border: none;
     color: #FFFFFF;
     text-align: center;
