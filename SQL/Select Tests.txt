@@ -1,0 +1,61 @@
+# These are just some tests with the dummy data and what they should return, as examples to use as reference.
+
+# Get book display list WITHOUT any filters. Returns three books, two by Tolex and one by Dillon.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id;
+
+# Featured books. Returns one book by Dillon.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.is_featured = true;
+
+# Completed books. Returns one book by Tolex.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.is_completed = true;
+
+# Books written by an author. Returns two books by Tolex.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.author_id = 2;
+
+# Selecting by tag 'Gods' returns two books. One by Tolex and one by Dillon
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+INNER JOIN tags_database as td ON bd.book_id = td.book_id
+WHERE td.tag_string = 'Gods';
+
+# Grabbing all of the reviews for book 1. Returns three reviews by three different users. (1 indexing error :/)
+SELECT rd.num_stars, rd.review_content, ud.user_name FROM reviews_database
+INNER JOIN user_database as ud ON rd.user_id = ud.user_id
+WHERE rd.book_id = 1;
+
+# Getting average number of stars of book 1
+SELECT AVG(num_stars) FROM reviews_database
+WHERE book_id = 1;
+
+# Getting the total amount donated to book 3. Returns 38.60.
+SELECT SUM(amount) FROM donations_database
+WHERE book_id = 3;
+
+# Getting all chapter titles of book 2. Returns Prologue and Epilogue.
+SELECT title, book_chapter_index, publish_date FROM chapter_database
+WHERE book_id = 2
+ORDER BY book_chapter_index ASC;
+
+# Getting the id, title, and chapter content of book 2, chapter 2. Returns Epilogue Chapter info.
+SELECT chapter_id, title, chapter_content FROM chapter_database
+WHERE book_id = 2 AND book_chapter_index = 2;
+
+# Getting chapter comments on book 1, chapter 1. Returns two comments.
+SELECT cd.comment_content, cd.publish_date, ud.user_name FROM comments_database as cd
+INNER JOIN user_database as ud ON cd.user_id = ud.user_id
+WHERE cd.chapter_id = 1
+ORDER BY cd.publish_date DESC;
+
+# Getting all books in the first user's library. Returns 3 books with a progress index of 0.
+SELECT book_id, progress_index FROM user_library_database
+WHERE user_id = 1;
+
+# Getting 'Tolex' user's user_id.
+Select user_id FROM user_database as ud WHERE ud.user_name = 'Tolex';

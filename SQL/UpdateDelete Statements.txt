@@ -1,0 +1,38 @@
+# Update Statements
+# These statements are called whenever something changes or needs to be updated in the database. These all take the same general format, so I'll show a few examples. You just need to change the table, column names, and values.
+
+# Changes to the book database. Called whenever author makes a change.
+UPDATE book_database
+SET photo = val1, author_summary = val2, ...
+WHERE book_id = current_session_book_id;
+
+# Changing the updated_date when a new chapter is published.
+UPDATE book_database
+SET updated_date = current_date
+WHERE book_id = current_session_book_id;
+
+# Author edits their chapter
+UPDATE chapter_database
+SET chapter_content = what_author_entered
+WHERE chapter_id = current_session_chapter_id;
+
+# User advances their progress in a book in their library
+UPDATE user_library_database
+SET progress_index = current_read_chapter (no += 1 in SQL so this will need to be done on the frontend :/)
+WHERE book_id = current_book_id AND user_id = current_user_id;
+
+
+# Delete statements
+# We don't use these much, but they definitely exist. They also take a simple format.
+
+# Author Deletes a tag
+DELETE FROM tags_database WHERE book_id = session_book_id AND tag_string = what_user_entered;
+
+# User removes a book from their library
+DELETE FROM user_library_database WHERE book_id = session_book_id AND user_id = current_user_id;
+
+# User deletes their review
+DELETE FROM reviews_database WHERE book_id = session_book_id AND user_id = current_user_id;
+
+# User deletes their comment
+DELETE FROM comments_database WHERE chapter_id = session_chapter_id AND user_id = current_user_id;

@@ -1,0 +1,34 @@
+# These statements are called whenever something new is added to the database. These will have to be dynamically created on the frontend.
+
+# Author creates a new book. I'm thinking the only fields we require from them are the title and format. The rest can be passed in by the session or modified on the edit page.
+INSERT INTO book_database (author_id, title, book_format, updated_date, is_completed, is_featured)
+VALUES (author_id_from_session, title_from_author, book_format_from_author, current_date, false, false);
+
+# Author publishes a new chapter for their book.
+INSERT INTO chapter_database (book_id, book_chapter_id, chapter_content, publish_date)
+VALUES (current_book_id_from_session, current_number_of_chapters, what_author_entered, current_date);
+
+# Author adds a tag to their book.
+INSERT INTO tags_database (book_id, tag_string)
+VALUES (current_book_id_from_session, tag_author_added);
+
+# New user signs up
+INSERT INTO user_database (user_name, password, user_email, auth_token)
+VALUES (user_name_entered_by_user, password_entered_by_user, email_entered_by_user, auth_token_generated_by_server);
+
+# User posts a review of a book
+INSERT INTO reviews_database (num_stars, book_id, user_id, review_content)
+VALUES (stars_user_selected, current_book_id_from_session, current_user_id_from_session, what_user_posted);
+
+# User posts a comment on a chapter
+INSERT INTO comments_database (chapter_id, user_id, comment_content, publish_date)
+VALUES (current_chapter_from_session, current_user_id_from_session, what_user_posted, current_date);
+
+# User adds a new book to their library
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (current_user_id_from_session, current_book_id_from_session, 0);
+
+# User makes a new donation
+INSERT INTO donations_database (book_id, user_id, amount)
+VALUES (current_book_id_from_session, current_user_id_from_session, amount_from_session);
+

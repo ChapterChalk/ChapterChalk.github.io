@@ -1,0 +1,112 @@
+# Generates some dummy data to use for testing. Feel free to add your own too!
+
+# Users
+INSERT INTO user_database (user_name, password, user_email, auth_token)
+VALUES ('username', 'password', 'mail@gmail.com', 'abcde');
+
+INSERT INTO user_database (user_name, password, user_email, auth_token)
+VALUES ('Tolex', 'Xelot', 'ctolex@gmail.com', 'abra');
+
+INSERT INTO user_database (user_name, password, user_email, auth_token)
+VALUES ('Dillon', 'Nollid', 'dillon@yahoo.com', 'bedlum');
+
+INSERT INTO user_database (user_name, password, user_email, auth_token)
+VALUES ('Andy', 'Ydna', 'andyx@hotmail.com', 'charamander');
+
+
+# Books
+INSERT INTO book_database (author_id, title, book_format, updated_date, is_completed, is_featured)
+VALUES (2, 'How to be a Dragon', 'web', '2020-9-12', false, false);
+
+INSERT INTO book_database (author_id, title, book_format, updated_date, is_completed, is_featured)
+VALUES (2, 'Challenge the Heavens', 'web', '2019-10-12', true, false);
+
+INSERT INTO book_database (author_id, title, book_format, updated_date, is_completed, is_featured)
+VALUES (3, 'Programming Divinity', 'audio', '2020-10-12', false, true);
+
+
+# Tags
+INSERT INTO tags_database (book_id, tag_string)
+VALUES (1, 'Dragons');
+
+INSERT INTO tags_database (book_id, tag_string)
+VALUES (2, 'Martial Arts');
+
+INSERT INTO tags_database (book_id, tag_string)
+VALUES (2, 'Gods');
+
+INSERT INTO tags_database (book_id, tag_string)
+VALUES (3, 'Gods');
+
+
+# Reviews
+INSERT INTO reviews_database (num_stars, book_id, user_id, review_content)
+VALUES (5, 1, 1, 'Shameless self-promotion! Dragons rule!');
+
+INSERT INTO reviews_database (num_stars, book_id, user_id, review_content)
+VALUES (1, 1, 2, 'Dragons are lame! Aliens are where it\'s at!');
+
+INSERT INTO reviews_database (num_stars, book_id, user_id, review_content)
+VALUES (4, 1, 3, 'I think Dragons are pretty cool!');
+
+INSERT INTO reviews_database (num_stars, book_id, user_id, review_content)
+VALUES (4, 2, 2, 'Drill through the heavens!');
+
+
+# Chapters
+INSERT INTO chapter_database (book_id, book_chapter_index, title, chapter_content, publish_date)
+VALUES (1, 1, 'What does the Dragon say?', 'A Dragon goes RAWWWRRR!!!', '2020-9-12');
+
+INSERT INTO chapter_database (book_id, book_chapter_index, title, chapter_content, publish_date)
+VALUES (2, 1, 'Prologue', 'To challenge the heavens...', '2019-10-12');
+
+INSERT INTO chapter_database (book_id, book_chapter_index, title, chapter_content, publish_date)
+VALUES (2, 2, 'Epilogue', '...one must dominate the earth!', '2019-11-12');
+
+INSERT INTO chapter_database (book_id, book_chapter_index, title, chapter_content, publish_date)
+VALUES (3, 1, 'Legends tell...', 'I am the God program!', '2020-10-12');
+
+
+# Comments
+INSERT INTO comments_database (chapter_id, user_id, comment_content, publish_date)
+VALUES (1, 1, 'RAWR!', '2020-9-12');
+
+INSERT INTO comments_database (chapter_id, user_id, comment_content, publish_date)
+VALUES (1, 2, 'SCREE!', '2020-9-14');
+
+INSERT INTO comments_database (chapter_id, user_id, comment_content, publish_date)
+VALUES (2, 2, 'What could it be?', '2020-9-14');
+
+INSERT INTO comments_database (chapter_id, user_id, comment_content, publish_date)
+VALUES (2, 3, 'DOMINATE!', '2019-11-12');
+
+
+# User Libraries
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (1, 1, 1);
+
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (1, 2, 1);
+
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (1, 3, 1);
+
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (2, 2, 2);
+
+INSERT INTO user_library_database (user_id, book_id, progress_index)
+VALUES (3, 2, 1);
+
+
+# Donations
+INSERT INTO donations_database (book_id, user_id, amount)
+VALUES (1, 3, 20.76);
+
+INSERT INTO donations_database (book_id, user_id, amount)
+VALUES (2, 3, 14.80);
+
+INSERT INTO donations_database (book_id, user_id, amount)
+VALUES (3, 1, 7.80);
+
+INSERT INTO donations_database (book_id, user_id, amount)
+VALUES (3, 1, 30.80);

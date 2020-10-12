@@ -1,0 +1,65 @@
+# Each of these statements is some core functionality of our MVP or a useful helper function. Replace the concrete data below dynamically when calling it.
+
+# Get book display list WITHOUT any filters
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id;
+
+# Adding filters to the above is pretty easy, you just need to add it to the where clause. Here's a few examples. Send me a text if there are any others here that you'd like me to include.
+# Featured books
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.is_featured = true;
+
+# Completed books
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.is_completed = true;
+
+# Books written by an author. Call the get user below to get the author_id.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+WHERE bd.author_id = filter_author_id_goes_here;
+
+# Selecting by tags is a bit trickier, but not too bad.
+SELECT bd.book_id, bd.photo, ud.user_name FROM book_database as bd
+INNER JOIN user_database as ud ON bd.author_id = ud.user_id
+INNER JOIN tags_database as td ON bd.book_id = td.book_id
+WHERE td.tag_string = tag_string_goes_here;
+
+# Grabbing all of the reviews
+SELECT rd.num_stars, rd.review_content, ud.user_name FROM reviews_database as rd
+INNER JOIN user_database as ud ON rd.user_id = ud.user_id
+WHERE rd.book_id = current_session_book_id;
+
+# Getting average number of stars of a book
+SELECT AVG(num_stars) FROM reviews_database
+WHERE book_id = current_session_book_id;
+
+# Getting the total amount donated to a book
+SELECT SUM(amount) FROM donations_database
+WHERE book_id = current_session_book_id;
+
+# Getting all chapter titles of a book sorted by their book_chapter_index. Used in creating a table of contents page
+SELECT title, book_chapter_index, publish_date FROM chapter_database
+WHERE book_id = current_session_book_id
+ORDER BY book_chapter_index ASC;
+
+# Getting the id, title, and chapter content of a particular chapter. Can also query by the chapter ID itself, but I don't see where that would be useful.
+SELECT chapter_id, title, chapter_content FROM chapter_database
+WHERE book_id = current_session_book_id AND book_chapter_index = requested_chapter_no;
+
+# Getting all comments on a chapter sorted by most recent
+SELECT cd.comment_content, cd.publish_date, ud.user_name FROM comments_database as cd
+INNER JOIN user_database as ud ON cd.user_id = ud.user_id
+WHERE cd.chapter_id = current_chapter_id_from_session
+ORDER BY cd.publish_date DESC;
+
+# Getting all books in a user's library, as well as their progress
+SELECT book_id, progress_index FROM user_library_database
+WHERE user_id = current_session_user;
+
+# Get User ID helper function
+Select user_id FROM user_database as ud WHERE ud.user_name = user_name_being_searched;
+
+
+

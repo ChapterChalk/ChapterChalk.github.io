@@ -1,0 +1,24 @@
+# Simple tests to use as examples. Each of the below updates/deletes one row.
+UPDATE book_database
+SET author_summary = 'Always be yourself, unless you can be a Dragon, in which case always be a Dragon', is_featured = true
+WHERE book_id = 1;
+
+UPDATE book_database
+SET updated_date = '2020-10-12'
+WHERE book_id = 2;
+
+UPDATE chapter_database
+SET chapter_content = 'A long, long time ago, in a galaxy far, far away...'
+WHERE chapter_id = 2;
+
+UPDATE user_library_database
+SET progress_index = 2
+WHERE book_id = 2 AND user_id = 1;
+
+DELETE FROM tags_database WHERE book_id = 2 AND tag_string = 'Martial Arts';
+
+DELETE FROM user_library_database WHERE book_id = 1 AND user_id = 1;
+
+DELETE FROM reviews_database WHERE book_id = 1 AND user_id = 1;
+
+DELETE FROM comments_database WHERE chapter_id = 1 AND user_id = 2;
